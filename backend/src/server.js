@@ -2,6 +2,7 @@
 require('dotenv').config();
 // DEPENDENCIES
 const express = require('express');
+const router = express.Router();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
@@ -28,39 +29,42 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 
 
-// Schemes
+// // Schemes
 
-const beerSchema = new mongoose.Schema({
-  beerid: { type: Number, required: true, unique: true },
-  beername: { type: String, required: true }
-},
-{
-  timestamps: true
-});
-
-
-// Create Model
-var Beer = mongoose.model('Beer', beerSchema);
-
-mongoose.model('Beer', beerSchema);
-
-// Beer 생성
-app.get('/user/insert', function(req, res) {
-  Beer.create( {
-      beerid: '1',
-      beername: '오비맥주'
-      },
-      function(err, beer) {
-          if (err) return res.status(500).send("User 생성 실패.");
-          res.status(200).send(beer);
-      });
-});
+// const beerSchema = new mongoose.Schema({
+//   beerid: { type: Number, required: true, unique: true },
+//   beername: { type: String, required: true }
+// },
+// {
+//   timestamps: true
+// });
 
 
-// User 전체 조회
-app.get('/users', function(req, res) {
-  Beer.find( {}, function(err, beers) {
-      if (err) return res.status(500).send("Beer 전체 조회 실패.");
-      res.status(200).send(beers);
-  });
-});
+const BeerController = require('./api/Beer/BeerController');
+app.use('/', BeerController);
+module.exports = app;
+// // Create Model
+// var Beer = mongoose.model('Beer', beerSchema);
+
+// mongoose.model('Beer', beerSchema);
+
+// // Beer 생성
+// app.get('/user/insert', function(req, res) {
+//   Beer.create( {
+//       beerid: '1',
+//       beername: '오비맥주'
+//       },
+//       function(err, beer) {
+//           if (err) return res.status(500).send("User 생성 실패.");
+//           res.status(200).send(beer);
+//       });
+// });
+
+
+// // User 전체 조회
+// app.get('/users', function(req, res) {
+//   Beer.find( {}, function(err, beers) {
+//       if (err) return res.status(500).send("Beer 전체 조회 실패.");
+//       res.status(200).send(beers);
+//   });
+// });
