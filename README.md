@@ -6,3 +6,8 @@
 - corss-env
 - react-router-dom
 - query-string
+
+# How to use
+
+- yarn server
+- yarn start
