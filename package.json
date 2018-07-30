@@ -13,7 +13,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "client": "cd frontend && yarn client",
-    "server": "cd backend && nodemon server.js",
+    "server": "cd backend && nodemon src/server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "proxy": "http://localhost:5000/"
