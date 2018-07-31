@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
 const Beer = require('./Beer');
+var express = require('express');
 
 // Beer 생성
-router.post('/insert', (req, res) => {
+exports.create('/insert', (req, res) => {
     Beer.create( {
         beerid: req.body.beerid,
         beername: req.body.beername
@@ -15,7 +14,8 @@ router.post('/insert', (req, res) => {
 });
 
 // Beer 전체 조회
-router.get('/beers', (req, res) => {
+exports.find('/beers', (req, res) => {
+    console.log('beers');
     Beer.find( {}, (err, beers) => {
         if (err) return res.status(500).send("Beer 전체 조회 실패.");
         res.status(200).send(beers);
@@ -23,7 +23,7 @@ router.get('/beers', (req, res) => {
 });
 
 // Beer id로 조회
-router.get('/beers/:beerid', (req, res) => {
+exports.findOne('/beers/:beerid', (req, res) => {
     console.log(req.params.beerid);
     Beer.findOne({"beerid": req.params.beerid}, (err, beer) => {
         if (err) return res.status(500).send("Beer id 조회 실패");
@@ -33,7 +33,7 @@ router.get('/beers/:beerid', (req, res) => {
 });
 
 // Beer id로 수정
-router.put('/beer/:beerid', (req, res) => {
+exports.updateOne('/beer/:beerid', (req, res) => {
     Beer.updateOne({"beerid": req.params.beerid}, req.params.Beer, (err, beer) => {
         if (err) return res.status(500).send("Beer id 수정 실패");
         if (!beer) return res.status(404).send("Beer id가 존재하지 않음");
@@ -42,11 +42,20 @@ router.put('/beer/:beerid', (req, res) => {
 });
 
 // Beer id로 삭제
-router.delete('/beer/:beerid', (req, res) => {
+exports.deleteOne('/beer/:beerid', (req, res) => {
     Beer.deleteOne({"beerid": req.params.beerid}, (err, beer) => {
         if (err) return res.status(500).send("Beer id 삭제 실패");
         if (!beer) return res.status(404).send("Beer id가 존재하지 않음");
         res.status(200).send(beer);
+    });
+});
+
+// Bear 전체 조회
+exports.find('/bears', (req, res) => {
+    console.log('bears');
+    Beer.find( {}, (err, beers) => {
+        if (err) return res.status(500).send("Beer 전체 조회 실패.");
+        res.status(200).send(beers);
     });
 });
 

@@ -2,7 +2,6 @@
 require('dotenv').config();
 // DEPENDENCIES
 const express = require('express');
-const router = express.Router();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
@@ -39,9 +38,12 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 //   timestamps: true
 // });
 
+const BeerController = require('./api/Beer/index.js');
+app.use('/beer', BeerController);
 
-const BeerController = require('./api/Beer/BeerController');
-app.use('/', BeerController);
+// const BeerController = require('./api/Beer/BeerController');
+// app.use('/', BeerController);
+
 module.exports = app;
 // // Create Model
 // var Beer = mongoose.model('Beer', beerSchema);
