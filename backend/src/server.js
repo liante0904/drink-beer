@@ -1,5 +1,6 @@
 // ENV
 require('dotenv').config();
+
 // DEPENDENCIES
 const express = require('express');
 const mongoose = require('mongoose');
@@ -20,31 +21,19 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Successfully connected to mongodb'))
   .catch(e => console.error(e));
 
-app.get('/api/hello', (req, res) => {
-    res.send({express: 'Hello From Express'});
+// test url
+app.get('/', (req, res) => {
+    res.json({"message": 'Welcome'});
 });
+
+require('./route/beer.route.js')(app);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 
-
-// // Schemes
-
-// const beerSchema = new mongoose.Schema({
-//   beerid: { type: Number, required: true, unique: true },
-//   beername: { type: String, required: true }
-// },
-// {
-//   timestamps: true
-// });
-
-const BeerController = require('./api/Beer/index.js');
-app.use('/beer', BeerController);
-
 // const BeerController = require('./api/Beer/BeerController');
 // app.use('/', BeerController);
 
-module.exports = app;
 // // Create Model
 // var Beer = mongoose.model('Beer', beerSchema);
 

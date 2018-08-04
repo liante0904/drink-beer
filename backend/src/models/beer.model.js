@@ -10,8 +10,5 @@ let BeerSchema = new mongoose.Schema({
 });
 
 
-// Create Model
-mongoose.model('Beer', BeerSchema);
-
 // Create Model & Export
-module.exports = mongoose.model('Beer');
+module.exports = mongoose.model('Beer', BeerSchema);
