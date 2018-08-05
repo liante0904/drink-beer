@@ -8,11 +8,11 @@ module.exports = (app) => {
     app.get('/beers', beers.findAll);
 
     // Retrieve a Beer by Id
-    //app.get('/beers/:beerId', beers.findOne);
+    app.get('/beers/:beerid', beers.findOne);
 
     // Update a Beer by Id
     //app.put('/beers/:beerId', beers.update);
     
     // Delete a Beer by Id
-    //app.delete('/beers/:beerId', beers.delete);
+    app.delete('/beers/:beerid', beers.delete);
 }   
