@@ -41,25 +41,26 @@ exports.findAll = (req, res) => {
     })
 };
 
-// exports.create('/insert', (req, res) => {
-//     Beer.create( {
-//         beerid: req.body.beerid,
-//         beername: req.body.beername
-//         },
-//         (err, beer) => {
-//             if (err) return res.status(500).send("Beer 생성 실패.");
-//             res.status(200).send(beer);
-//         });
-// });
-
-// // Beer 전체 조회
-// router.get('/beers', (req, res) => {
-//     console.log('beers');
-//     Beer.find( {}, (err, beers) => {
-//         if (err) return res.status(500).send("Beer 전체 조회 실패.");
-//         res.status(200).send(beers);
-//     });
-// });
+exports.findOne = (req, res) => {
+    Beer.findOne(req.params)
+    .then(beer => {
+        if (!beer) {
+            return res.status(400).send({
+                message: "Beer not found with id " + req.params.beerid
+            });
+        }
+        res.send(beer);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Note not found with id " + req.params.noteId
+            });                
+        }
+        return res.status(500).send({
+            message: "Error retrieving note with id " + req.params.noteId
+        });
+    });
+};
 
 // // Beer id로 조회
 // router.get('/beers/:beerid', (req, res) => {
@@ -81,13 +82,28 @@ exports.findAll = (req, res) => {
 // });
 
 // // Beer id로 삭제
-// exports.deleteOne('/beer/:beerid', (req, res) => {
-//     Beer.deleteOne({"beerid": req.params.beerid}, (err, beer) => {
-//         if (err) return res.status(500).send("Beer id 삭제 실패");
-//         if (!beer) return res.status(404).send("Beer id가 존재하지 않음");
-//         res.status(200).send(beer);
-//     });
-// });
+exports.delete = (req, res) => {
+    console.log(req.params);
+    Beer.deleteOne(req.params)
+    .then(beer => {
+        if(!beer) {
+            return res.status(404).send({
+                message: "Beer not found with id " + req.params.beerid
+            });
+        }
+        res.send({message: "Note deleted successfully!"});
+    }).catch(err => {
+        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).send({
+                message: "Beer not found with id " + req.params.beerid
+            });                
+        }
+        return res.status(500).send({
+            message: "Could not delete beer with id " + req.params.beerid
+        });
+    });
+};
+
 
 // // Bear 전체 조회
 // exports.find('/bears', (req, res) => {
