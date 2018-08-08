@@ -8,7 +8,7 @@ class Beer extends Component {
 id = 3 // 이미 0,1,2 가 존재하므로 3으로 설정
 
   state = {
-    input: '',    
+    input: 'asd',    
     test: '맥주테스트',
     beers: [
       { id: 0, text: ' 오비맥주', checked: false },
@@ -16,9 +16,16 @@ id = 3 // 이미 0,1,2 가 존재하므로 3으로 설정
       { id: 2, text: ' 1664', checked: false }
     ]
   }
-  
+  handleChange = (e) => {
+      this.setState({
+          input: e.target.value
+      });
+  }
 render(){
     const { input, beers } = this.state;
+    const {
+        handleChange
+    } = this;
     // const beerList = beers.map(
     //     ({id, text, checked}) => (
     //         <div>
@@ -32,6 +39,7 @@ render(){
         <BeerListTemplate form={(
             <Form
                 value={input}
+                onChange={handleChange}
             />
         )}>    
             <BeerItemList beers={beers}/>
