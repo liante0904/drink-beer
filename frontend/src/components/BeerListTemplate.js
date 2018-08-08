@@ -1,16 +1,16 @@
 import React from 'react';
 
-const BeerListTemplate = () => {
+const BeerListTemplate = ({form, children}) => {
     return (
         <main className="beer-list-template">
             <div className="title">
             맥주 목록
             </div>
             <section className="form-wrapper">
-            여기는 form
+                {form}
             </section>
             <section className="beers-wrapper">
-            여기는 children
+                {children}
             </section>
         </main>
     );
