@@ -11,7 +11,7 @@ module.exports = (app) => {
     app.get('/beers/:beerid', beers.findOne);
 
     // Update a Beer by Id
-    //app.put('/beers/:beerId', beers.update);
+    app.put('/beers/:beerid', beers.update);
     
     // Delete a Beer by Id
     app.delete('/beers/:beerid', beers.delete);

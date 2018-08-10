@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 require('./route/beer.route.js')(app);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
+module.exports = app;
 
 // const BeerController = require('./api/Beer/BeerController');
 // app.use('/', BeerController);

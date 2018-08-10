@@ -1,30 +1,28 @@
 const Beer = require('../models/beer.model.js');
 
 // Create and Save a new Beer
-
-
 // Beer 생성
 exports.create = (req, res) => {
     // Validate request
     if(!req.body.beername) {
         return res.status(400).send({
-            message: "Note content can not be empty"
+            message: "Beer content can not be empty"
         });
     }
 
-    // Create a Note
+    // Create a Beer Model
     const beer = new Beer({
         beerid: req.body.beerid || "Untitled Note", 
         beername: req.body.beername
     });
 
-    // Save Note in the database
+    // Save Beer in the database
     beer.save()
     .then(data => {
         res.send(data);
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while creating the Note."
+            message: err.message || "Some error occurred while creating the Beer."
         });
     });
 };
@@ -36,11 +34,12 @@ exports.findAll = (req, res) => {
         res.send(beers);
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while retrieving notes."
+            message: err.message || "Some error occurred while retrieving Beers."
         })
     })
 };
 
+// Beer id로 조회
 exports.findOne = (req, res) => {
     Beer.findOne(req.params)
     .then(beer => {
@@ -53,11 +52,11 @@ exports.findOne = (req, res) => {
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.noteId
+                message: "Note not found with id " + req.params.beerid
             });                
         }
         return res.status(500).send({
-            message: "Error retrieving note with id " + req.params.noteId
+            message: "Error retrieving note with id " + req.params.beerid
         });
     });
 };
@@ -80,6 +79,39 @@ exports.findOne = (req, res) => {
 //         res.status(200).send(beer);
 //     });
 // });
+
+// Beer Update
+exports.update = (req, res) => {
+    console.log("here: !!!!"+req.body.beerid)
+    if (!req.body.beerid) {
+        return res.status(400).send({
+            message: "Beer content can not be empty"
+        });
+    }
+
+    // Find note and update it with the request body
+    Beer.findOneAndUpdate(req.params.beerid, { 
+        beername: req.body.beername
+    }, {new: true})
+    .then(beer => {
+        if(!beer) {
+            return res.status(404).send({
+                message: "Note not found with id " + req.params.beerid
+            });
+        }
+        res.send(beer);
+    }).catch(err => {
+        if(err.kind === 'ObjectId') {
+            return res.status(404).send({
+                message: "Note not found with id " + req.params.beerid
+            });                
+        }
+        return res.status(500).send({
+            message: "Error updating note with id " + req.params.beerid
+        });
+    });
+
+}
 
 // // Beer id로 삭제
 exports.delete = (req, res) => {
