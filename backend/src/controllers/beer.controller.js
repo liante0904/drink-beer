@@ -4,7 +4,7 @@ const Beer = require('../models/beer.model.js');
 // Beer 생성
 exports.create = (req, res) => {
     // Validate request
-    if(!req.body.beername) {
+    if(!req.body.beerid) {
         return res.status(400).send({
             message: "Beer content can not be empty"
         });
@@ -12,7 +12,7 @@ exports.create = (req, res) => {
 
     // Create a Beer Model
     const beer = new Beer({
-        beerid: req.body.beerid || "Untitled Note", 
+        beerid: req.body.beerid || "Untitled Beer", 
         beername: req.body.beername
     });
 
@@ -52,11 +52,11 @@ exports.findOne = (req, res) => {
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.beerid
+                message: "Beer not found with id " + req.params.beerid
             });                
         }
         return res.status(500).send({
-            message: "Error retrieving note with id " + req.params.beerid
+            message: "Error retrieving Beer with id " + req.params.beerid
         });
     });
 };
@@ -82,32 +82,31 @@ exports.findOne = (req, res) => {
 
 // Beer Update
 exports.update = (req, res) => {
-    console.log("here: !!!!"+req.body.beerid)
     if (!req.body.beerid) {
         return res.status(400).send({
             message: "Beer content can not be empty"
         });
     }
 
-    // Find note and update it with the request body
+    // Find Beer and update it with the request body
     Beer.findOneAndUpdate(req.params.beerid, { 
         beername: req.body.beername
     }, {new: true})
     .then(beer => {
         if(!beer) {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.beerid
+                message: "Beer not found with id " + req.params.beerid
             });
         }
         res.send(beer);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Note not found with id " + req.params.beerid
+                message: "Beer not found with id " + req.params.beerid
             });                
         }
         return res.status(500).send({
-            message: "Error updating note with id " + req.params.beerid
+            message: "Error updating Beer with id " + req.params.beerid
         });
     });
 
@@ -123,7 +122,7 @@ exports.delete = (req, res) => {
                 message: "Beer not found with id " + req.params.beerid
             });
         }
-        res.send({message: "Note deleted successfully!"});
+        res.send({message: "Beer deleted successfully!"});
     }).catch(err => {
         if(err.kind === 'ObjectId' || err.name === 'NotFound') {
             return res.status(404).send({

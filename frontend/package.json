@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "query-string": "^6.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -16,6 +17,7 @@
     "eject": "react-scripts eject",
     "client": "cross-env NODE_PATH=src react-scripts start"
   },
+  "proxy": "http://localhost:5000/",
   "devDependencies": {
     "cross-env": "^5.2.0"
   }

@@ -6,12 +6,12 @@ class BeerItemList extends Component {
         const { beers } = this.props;
         
         const beerList = beers.map(
-            ({id, text, checked}) => (
+            ({ _id, beername, beerid, checked}) => (
                 <BeerItem
-                    key={id}
-                    text={text}
+                    _id={_id}
+                    beername={beername}
+                    beerid={beerid}
                     checked={checked}
-                    id={id}
                 />
             )
         );

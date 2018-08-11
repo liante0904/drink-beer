@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 
 class BeerItem extends Component {
     render(){
-        const { text, id } = this.props;
+        const { _id, beername, beerid, checked } = this.props;
         return(
         <div className='beer-item' >
             <div className='remove'>&times;</div>
         <div>
-            <div>{text}</div>
+            <div id={_id}>
+            <span>맥주 아이디 : {beerid}, </span>
+            <span>맥주 이름 : {beername}, </span>
+            맥주 key : {_id}
+            </div>
         </div>
         </div>
         );

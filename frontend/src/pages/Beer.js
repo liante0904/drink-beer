@@ -2,20 +2,58 @@ import React, { Component } from 'react';
 import BeerListTemplate from '../components/BeerListTemplate';
 import BeerItemList from '../components/BeerItemList'
 import Form from '../components/Form';
+import * as service from '../services/post';
+import { error } from 'util';
+
 class Beer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+        input: 'asd',    
+        test: '맥주테스트',
+        beers: []
+        };
+      }
+
+// id = 3 // 이미 0,1,2 가 존재하므로 3으로 설정
+
+//   state = {
+//     input: 'asd',    
+//     test: '맥주테스트',
+//     beers: [
+//       { id: 0, beername: ' 오비맥주', checked: false },
+//       { id: 1, beername: ' 하이트', checked: true },
+//       { id: 2, beername: ' 1664', checked: false }
+//     ]
+//   }
+  fetchPostInfo = async (postId) => {
+    const post = await service.getPost(postId);
+    console.log(post);
+    //const comments = await service.getComments(postId);
+    //console.log(comments);
+}
+
+componentDidMount(){
+    fetch('/beers')
+    .then(res => res.json())
+    .then(
+        (result) => {
+            console.log(result)
+            this.setState({
+                beers: result
+            });
+        },
+        (error) => {
+            console.log(error);
+            this.setState({
+               error 
+            });
+        }
+    )
+    // this.fetchPostInfo(1);
+}
 
 
-id = 3 // 이미 0,1,2 가 존재하므로 3으로 설정
-
-  state = {
-    input: 'asd',    
-    test: '맥주테스트',
-    beers: [
-      { id: 0, text: ' 오비맥주', checked: false },
-      { id: 1, text: ' 하이트', checked: true },
-      { id: 2, text: ' 1664', checked: false }
-    ]
-  }
   handleChange = (e) => {
       this.setState({
           input: e.target.value
@@ -26,15 +64,6 @@ render(){
     const {
         handleChange
     } = this;
-    // const beerList = beers.map(
-    //     ({id, text, checked}) => (
-    //         <div>
-    //         <span>맥주 아이디 : {id}, </span>
-    //         <span>맥주 이름: {text}, </span>
-    //         <span>맥주 체크 : {checked.toString()}, </span>
-    //         </div>
-    //     )
-    // );
     return(        
         <BeerListTemplate form={(
             <Form
