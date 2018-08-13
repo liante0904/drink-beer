@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import BeerListTemplate from '../components/BeerListTemplate';
 import BeerItemList from '../components/BeerItemList'
-import Form from '../components/Form';
+import BeerForm from '../components/BeerForm';
 import * as service from '../services/post';
 import { error } from 'util';
 
@@ -64,9 +65,9 @@ render(){
     const {
         handleChange
     } = this;
-    return(        
+    return(    
         <BeerListTemplate form={(
-            <Form
+            <BeerForm
                 value={input}
                 onChange={handleChange}
             />

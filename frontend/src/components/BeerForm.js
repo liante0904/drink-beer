@@ -1,13 +1,15 @@
 import React from 'react';
-
-const Form = ({value, onChange}) => {
+import { Route, Switch } from 'react-router-dom';
+import { BeerAddForm } from '../pages';
+const BeerForm = ({value, onChange}) => {
+    
     return (
         <div className="form">
             <input value={value} onChange={onChange}/>
             <div>
-                추가
+                
             </div>
         </div>
     );
 };
-export default Form;
+export default BeerForm;
