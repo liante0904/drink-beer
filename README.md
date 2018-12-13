@@ -2,25 +2,29 @@
 
 > 맥주의 평점을 토이 프로젝트
 
-## Use Stack
+## Stack
 - Node.js
 - React
 - MongoDB
 
-## Use Package
+## Package
 - corss-env
 - react-router-dom
 - query-string
 
-# How to use
+## How to install
+`$ git clone https://github.com/liante0904/drink-beer.git`
 
-- Integrated Run
+`$ yarn dev-install`
+## How to use
+
+### Integrated Run
 
 ```bash
 yarn dev
 ```
 
-- Separate Run
+### Separate Run
 
 ```bash
 yarn server

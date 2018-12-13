@@ -4,16 +4,13 @@ import { Link } from 'react-router-dom';
 const BeerListTemplate = ({form, children}) => {
     return (
         <main className="beer-list-template">
-            <div className="title">
-
-            <Link to="/BeerAddForm">addBeer</Link>      
-            맥주 목록
-            </div>
-            <section className="form-wrapper">
-                {form}
-            </section>
+        {/* <Link to="/BeerAddForm">addBeer</Link>       */}
+            <div className="title">맥주 목록</div>
             <section className="beers-wrapper">
                 {children}
+            </section>
+            <section className="form-wrapper">
+                {form}
             </section>
         </main>
     );

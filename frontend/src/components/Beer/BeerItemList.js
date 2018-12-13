@@ -4,13 +4,12 @@ import BeerItem from './BeerItem';
 class BeerItemList extends Component {
     render(){
         const { beers } = this.props;
-        
+        console.log("beers : " + JSON.stringify(beers));
         const beerList = beers.map(
-            ({ _id, beername, beerid, checked}) => (
+            ({ id, beername, checked}) => (
                 <BeerItem
-                    _id={_id}
+                    id={id}
                     beername={beername}
-                    beerid={beerid}
                     checked={checked}
                 />
             )
