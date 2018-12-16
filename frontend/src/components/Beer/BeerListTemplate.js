@@ -5,7 +5,8 @@ const BeerListTemplate = ({form, children}) => {
     return (
         <main className="beer-list-template">
         {/* <Link to="/BeerAddForm">addBeer</Link>       */}
-            <div className="title">맥주 목록</div>
+            <div className="title"></div>
+            <h1>맥주 목록</h1>
             <section className="beers-wrapper">
                 {children}
             </section>

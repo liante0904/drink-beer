@@ -1,32 +1,23 @@
 {
-  "name": "example-create-react-app-express",
-  "version": "0.1.0",
-  "private": true,
+  "name": "blog-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
   "dependencies": {
-    "ajv": "^6.5.2",
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.4",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.3",
-    "method-override": "^3.0.0",
-    "mongoose": "^5.2.5",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "dotenv": "^5.0.1",
+    "joi": "^13.3.0",
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.2.12"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "node_modules/.bin/mocha src/route/beer.spec.js",
-    "eject": "react-scripts eject",
-    "client": "cd client && yarn start",
-    "server": "nodemon src/server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
-  },
-  "proxy": "http://localhost:5000/",
-  "devDependencies": {
-    "mocha": "^5.2.0",
-    "should": "^13.2.3",
-    "supertest": "^3.1.0"
+    "start": "NODE_PATH=src node src",
+    "start:dev": "NODE_PATH=src nodemon --watch src/ src/index.js"
   }
 }
