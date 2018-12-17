@@ -1,4 +1,5 @@
-const Post = require('models/post');
+// eslint-disable-next-line import/no-unresolved
+const Beer = require('models/beer');
 const Joi = require('joi');
 
 
@@ -18,7 +19,7 @@ exports.checkObjectId = (ctx, next) => {
 
 
 /*
-  POST /api/posts
+  Beer /api/beer
   { title, body, tags }
 */
 exports.write = async (ctx) => {
@@ -41,14 +42,14 @@ exports.write = async (ctx) => {
 
   const { title, body, tags } = ctx.request.body;
 
-  // 새 Post 인스턴스를 생성합니다.
-  const post = new Post({
+  // 새 Beer 인스턴스를 생성합니다.
+  const beer = new Beer({
     title, body, tags
   });
 
   try {
-    await post.save(); // 데이터베이스에 등록합니다.
-    ctx.body = post; // 저장된 결과를 반환합니다.
+    await beer.save(); // 데이터베이스에 등록합니다.
+    ctx.body = beer; // 저장된 결과를 반환합니다.
   } catch (e) {
     // 데이터베이스의 오류 발생
     ctx.throw(e, 500);
@@ -57,7 +58,7 @@ exports.write = async (ctx) => {
 
 
 /*
-  GET /api/posts
+  GET /api/beers
 */
 exports.list = async (ctx) => {
   // page가 주어지지 않았다면 1로 간주
@@ -71,21 +72,21 @@ exports.list = async (ctx) => {
   }
 
   try {
-    const posts = await Post.find()
+    const beers = await Beer.find()
       .sort({ _id: -1 })
       .limit(10)
       .skip((page - 1) * 10)
       .lean()
       .exec();
-    const postCount = await Post.countDocuments().exec();
-    const limitBodyLength = post => ({
-      ...post,
-      body: post.body.length < 200 ? post.body : `${post.body.slice(0, 200)}...`
+    const beerCount = await Beer.countDocuments().exec();
+    const limitBodyLength = beer => ({
+      ...beer,
+      body: beer.body.length < 200 ? beer.body : `${beer.body.slice(0, 200)}...`
     });
-    ctx.body = posts.map(limitBodyLength);
+    ctx.body = beers.map(limitBodyLength);
     // 마지막 페이지 알려주기
     // ctx.set은 response header를 설정해줍니다.
-    ctx.set('Last-Page', Math.ceil(postCount / 10));
+    ctx.set('Last-Page', Math.ceil(beerCount / 10));
   } catch (e) {
     ctx.throw(500, e);
   }
@@ -93,18 +94,18 @@ exports.list = async (ctx) => {
 
 
 /*
-  GET /api/posts/:id
+  GET /api/beers/:id
 */
 exports.read = async (ctx) => {
   const { id } = ctx.params;
   try {
-    const post = await Post.findById(id).exec();
+    const beer = await Beer.findById(id).exec();
     // 포스트가 존재하지 않음
-    if (!post) {
+    if (!beer) {
       ctx.status = 404;
       return;
     }
-    ctx.body = post;
+    ctx.body = beer;
   } catch (e) {
     ctx.throw(e, 500);
   }
@@ -112,12 +113,12 @@ exports.read = async (ctx) => {
 
 
 /*
-  DELETE /api/posts/:id
+  DELETE /api/beer/:id
 */
 exports.remove = async (ctx) => {
   const { id } = ctx.params;
   try {
-    await Post.findByIdAndRemove(id).exec();
+    await Beer.findByIdAndRemove(id).exec();
     ctx.status = 204;
   } catch (e) {
     ctx.throw(e, 500);
@@ -126,23 +127,23 @@ exports.remove = async (ctx) => {
 
 
 /*
-  PATCH /api/posts/:id
+  PATCH /api/beer/:id
   { title, body, tags }
 */
 exports.update = async (ctx) => {
   const { id } = ctx.params;
   try {
-    const post = await Post.findByIdAndUpdate(id, ctx.request.body, {
+    const beer = await Beer.findByIdAndUpdate(id, ctx.request.body, {
       new: true
       // 이 값을 설정해 주어야 업데이트된 객체를 반환합니다.
       // 설정하지 않으면 업데이트되기 전의 객체를 반환합니다.
     }).exec();
     // 포스트가 존재하지 않을 시
-    if (!post) {
+    if (!beer) {
       ctx.status = 404;
       return;
     }
-    ctx.body = post;
+    ctx.body = beer;
   } catch (e) {
     ctx.throw(e, 500);
   }

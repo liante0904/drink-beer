@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const Post = new Schema({
+const Beer = new Schema({
   title: String,
   body: String,
   tags: [String], // 문자열의 배열
@@ -12,5 +12,4 @@ const Post = new Schema({
   }
 });
 
-module.exports = mongoose.model('Post', Post);
-
+module.exports = mongoose.model('Beer', Beer);

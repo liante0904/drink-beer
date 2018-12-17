@@ -4,6 +4,7 @@
 
 ## Stack
 - Node.js
+  - [Koa](https://koajs.com/)
 - React
 - MongoDB
 
@@ -17,16 +18,14 @@
 
 `$ yarn dev-install`
 ## How to use
-
 ### Integrated Run
-
 ```bash
 yarn dev
 ```
-
 ### Separate Run
-
 ```bash
 yarn server
 yarn start
 ```
+
+### [Reference Documents](https://github.com/liante0904/drink-beer/blob/master/Reference.md)
