@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
 import BeerListTemplate from '../components/Beer/BeerListTemplate';
 import BeerItemList from '../components/Beer/BeerItemList'
 import BeerForm from '../components/Beer/BeerForm';
-import * as service from '../services/post';
-import { error } from 'util';
+// redux 예제
+import PageTemplate from 'components/common/PageTemplate';
 
 class Beer extends Component {
     id = 3 // 이미 0,1,2 가 존재하므로 3으로 설정
@@ -30,7 +29,6 @@ class Beer extends Component {
         }
     }
     handleCreate = (e) => {
-
         const { input, beers } = this.state;
         if (input == '') {
             alert("맥주를 입력하세요.");
@@ -53,7 +51,8 @@ render(){
         handleChange,
         handleCreate
     } = this;
-    return(    
+    return(
+        /*    
         <BeerListTemplate form={(
             <BeerForm
                 value={input}
@@ -64,6 +63,9 @@ render(){
         )}>    
             <BeerItemList beers={beers}/>
         </BeerListTemplate>
+        */
+       <PageTemplate/>
+
     );
 };
 

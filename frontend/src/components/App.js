@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { Rank, Login, Home, Beer, BeerAddForm } from 'pages';
-import  Header  from 'components/Header';
+import  Header  from 'components/common/Header';
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
       <div>
         <Header/>
@@ -18,7 +17,6 @@ class App extends Component {
         <Route exact path="/beerAddForm" component={BeerAddForm}/>
       </div>
     );
-  }
 }
 
 export default App;
