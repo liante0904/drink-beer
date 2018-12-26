@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-//import BeerListTemplate from '../components/Beer/BeerListTemplate';
-//import BeerItemList from '../components/Beer/BeerItemList'
-//import BeerForm from '../components/Beer/BeerForm';
 // redux 예제
 import PageTemplate from 'components/common/PageTemplate';
 import ListWrapper from 'components/list/ListWrapper';
-import BeerList from 'components/list/BeerList';
 import ListContainer from 'containers/list/ListContainer';
-
 
 class Beer extends Component {
     id = 3 // 이미 0,1,2 가 존재하므로 3으로 설정
@@ -55,26 +50,13 @@ render(){
         handleChange,
         handleCreate
     } = this;
+
     return(
-        /*    
-        <BeerListTemplate form={(
-            <BeerForm
-                value={input}
-                onKeyPress={handleKeyPress}
-                onChange={handleChange}
-                onCreate={handleCreate}
-            />
-        )}>    
-            <BeerItemList beers={beers}/>
-            <ListContainer/>
-        </BeerListTemplate>
-        */
        <PageTemplate>
            <ListWrapper>
                <ListContainer/>
            </ListWrapper>
        </PageTemplate>
-
     );
 };
 

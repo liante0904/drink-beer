@@ -15,7 +15,7 @@ const EDIT_BEER = 'editor/EDIT_BEER';
 // action creators
 export const initialize = createAction(INITIALIZE);
 export const changeInput = createAction(CHANGE_INPUT);
-export const writeBeer = createAction(WRITE_BEER, api.writeBeer);
+//export const writeBeer = createAction(WRITE_BEER, api.writeBeer);
 export const getBeer = createAction(GET_BEER, api.getBeer);
 export const editBeer = createAction(EDIT_BEER, api.editBeer);
 

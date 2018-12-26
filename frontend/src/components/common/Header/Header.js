@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = ({postId, logged, onRemove}) => {
+const Header = () => {
 
     return (
-    <div>
-        <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/Login">Login</Link></li>
-            <li><Link to="/Rank">Rank</Link></li>
-            <li><Link to="/Beer">Beer</Link></li>
-        </ul>
+    <div className="main-header">
+        <Link to="/">Home,</Link>
+        <Link to="/Login">Login</Link>
+        <Link to="/Rank">Rank</Link>
+        <Link to="/Beer">Beer</Link>
+        <Link to="/BeerEditPage">BeerEditPage</Link>
     </div>
 
     );
