@@ -27,6 +27,7 @@ class Beer extends Component {
             this.handleCreate();
         }
     }
+    /*
     handleCreate = (e) => {
         const { input, beers } = this.state;
         if (input == '') {
@@ -43,14 +44,16 @@ class Beer extends Component {
         })
       });
     }
+    */
 render(){
+    /*
     const { input, beers } = this.state;
     const {
         handleKeyPress,
         handleChange,
         handleCreate
     } = this;
-
+    */
     return(
        <PageTemplate>
            <ListWrapper>

@@ -22,10 +22,6 @@ class BeerEditTemplate extends Component {
                     <input type="text" placeholder="beer-name"></input>
                 </div>
                 <div>
-                    <button type="button" onClick={onSubmit}>전송하기</button>
-                </div>
-                <div>
-                    submit
                     {submit}
                 </div>
             </div>

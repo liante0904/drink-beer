@@ -23,10 +23,7 @@ export default handleActions({
     type: GET_BEER_LIST,
     onSuccess: (state, action) => {
       const { data: beers } = action.payload;
-
-      const lastPage = action.payload.headers['last-page'];
-      return state.set('beers', fromJS(beers))
-                  .set('lastPage', parseInt(lastPage, 10));
+      return state.set('beers', fromJS(beers));
     }
   })
 }, initialState)

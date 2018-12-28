@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './BeerList.css';
+
 
 const BeerItem = ({ title, body, publishedDate, tags, id}) => {
   const tagList = tags.map(

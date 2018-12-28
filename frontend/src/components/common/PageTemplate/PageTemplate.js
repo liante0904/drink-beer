@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './PageTemplate.css';
 
 const PageTemplate = ({children}) => {
   return (
