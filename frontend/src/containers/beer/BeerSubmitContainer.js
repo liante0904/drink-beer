@@ -34,13 +34,9 @@ class BeerSubmitContainer extends Component {
     const { loading, beers, page, lastPage, tag } = this.props;
     if(loading) return null; // 로딩 중에는 아무것도 보여주지 않습니다.
     return (
-        <div>
-            <button>Create Beer</button>
-            <div>TODO Create Beer</div>
-            <BeerList beers={beers}/>
-        </div>
-        
-
+      <div className="beer-submit">
+        <button>Create Beer</button>        
+      </div>        
     );
   }
 }

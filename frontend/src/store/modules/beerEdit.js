@@ -5,11 +5,11 @@ import { pender } from 'redux-pender';
 import * as api from 'lib/api';
 
 // action types
-const INITIALIZE = 'editor/INITIALIZE';
-const CHANGE_INPUT = 'editor/CHANGE_INPUT';
-const WRITE_BEER = 'editor/WRITE_BEER';
-const GET_BEER = 'editor/GET_BEER';
-const EDIT_BEER = 'editor/EDIT_BEER';
+const INITIALIZE = 'beer/INITIALIZE';
+const CHANGE_INPUT = 'beer/CHANGE_INPUT';
+const WRITE_BEER = 'beer/WRITE_BEER';
+const GET_BEER = 'beer/GET_BEER';
+const EDIT_BEER = 'beer/EDIT_BEER';
 
 
 // action creators

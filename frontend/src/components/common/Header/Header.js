@@ -5,11 +5,11 @@ const Header = () => {
 
     return (
     <div className="main-header">
-        <Link to="/">Home,</Link>
-        <Link to="/Login">Login</Link>
-        <Link to="/Rank">Rank</Link>
-        <Link to="/Beer">Beer</Link>
-        <Link to="/BeerEditPage">BeerEditPage</Link>
+        <p><Link to="/">Home,</Link></p>
+        <p><Link to="/Login">Login</Link></p>
+        <p><Link to="/Rank">Rank</Link></p>
+        <p><Link to="/Beer">Beer</Link></p>
+        <p><Link to="/BeerEditorPage">BeerEditorPage</Link></p>
     </div>
 
     );

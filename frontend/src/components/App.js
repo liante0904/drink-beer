@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Rank, Login, Home, Beer, BeerEditPage } from 'pages';
+import { Rank, Login, Home, Beer, BeerEditorPage } from 'pages';
 import  Header  from 'components/common/Header';
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
           <Route path="/login" component={Login}/>
         </Switch>
         <Route exact path="/beer" component={Beer}/>
-        <Route exact path="/BeerEditPage" component={BeerEditPage}/>
+        <Route exact path="/BeerEditorPage" component={BeerEditorPage}/>
       </div>
     );
 }

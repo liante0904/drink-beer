@@ -5,6 +5,7 @@ import ListWrapper from 'components/list/ListWrapper';
 import ListContainer from 'containers/list/ListContainer';
 
 class Beer extends Component {
+    /*
     id = 3 // 이미 0,1,2 가 존재하므로 3으로 설정
   
     state = {
@@ -15,6 +16,8 @@ class Beer extends Component {
           { id: 2, beername: '1664', checked: false }
         ]
     }
+    
+    
     // input 입력값 이벤트
     handleChange = (e) => {
         this.setState({
@@ -27,7 +30,8 @@ class Beer extends Component {
             this.handleCreate();
         }
     }
-    /*
+    
+    
     handleCreate = (e) => {
         const { input, beers } = this.state;
         if (input == '') {
