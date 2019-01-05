@@ -6,15 +6,14 @@ import { pender } from 'redux-pender';
 import * as api from 'lib/api';
 
 // action types
-const GET_BEER_LIST = 'list/GET_BEER_LIST';
+const GET_BEER_LIST = 'GET_BEER_LIST';
 
 // action creators
-export const getBeerList = createAction(GET_BEER_LIST, api.getBeerList, meta => meta);
+export const getBeerList = createAction(GET_BEER_LIST, api.getBeerList);
 
 // initial state
 const initialState = Map({
-  beers: List(),
-  lastPage: null
+  beers: List()
 });
 
 // reducer
