@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import BeerEditor from 'components/beerEdit/BeerEditor'
+import BeerEditor from 'components/BeerEdit/BeerEditor'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as editorActions from 'store/modules/editor';
 
 class BeerEditorContainer extends Component {
-
-    handleChangeInput = ({ beerId, beerName }) => {
+    handleChangeInput = ({ name, value }) => {
         const { EditorActions } = this.props;
-        EditorActions.changeInput({beerId, beerName});
+        EditorActions.changeInput({name, value});
     }
 
     render() {

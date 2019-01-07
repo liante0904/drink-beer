@@ -1,1 +1,1 @@
-export { default } from BeerEditorTemplate;
+export { default } from './BeerEditorTemplate';

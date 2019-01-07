@@ -1,6 +1,7 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
+import modules from './modules';
 //import penderMiddleware from 'redux-pender';
-import * as modules from './modules';
+
 
 //const reducers = combineReducers(modules);
 //const middlewares = [penderMiddleware()];
@@ -13,8 +14,8 @@ const composeEnhancers = devtools || compose;
 */
 // preloadedState는 추후 서버사이드 렌더링이 되었을 때 전달 받는 초기 상태입니다.
 const configure = () => {
-  const devtools = window.__REDUX_DEVTOOLS_EXTENSION_ && window.__REDUX_DEVTOOLS_EXTENSION_()
-  const store = createStore(modules, devtools);
+  const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  const store = createStore(modules, devTools);
   return store;
 }
 /*

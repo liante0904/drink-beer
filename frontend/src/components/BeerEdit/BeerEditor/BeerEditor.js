@@ -4,9 +4,9 @@ class BeerEditor extends Component {
     
     handleChange = (e) => {
         const { onChangeInput } = this.props;
-        const { beerId, beerName } = e.target;
-        onChangeInput({beerName, beerId});
-    }
+        const { name, value } = e.target;
+        onChangeInput({name, value});
+    } 
     render() {
         const { handleChange } = this;
         const { beerId, beerName } = this.props;
