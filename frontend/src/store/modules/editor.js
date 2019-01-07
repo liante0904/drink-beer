@@ -1,5 +1,4 @@
 import { createAction, handleActions } from 'redux-actions';
-
 import { Map } from 'immutable';
 //import { pender } from 'redux-pender';
 //import * as api from 'lib/api';
@@ -27,6 +26,8 @@ export default handleActions({
   [INITIALIZE]: (state, action) => initialState,
   [CHANGE_INPUT]: (state, action) => {
     const { beerId, beerName } = action.payload;
+    console.log('a',beerId)
+    console.log('b',beerName)
     return state.set(beerId, beerName);
   }
 }, initialState)

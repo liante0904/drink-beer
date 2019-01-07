@@ -7,7 +7,6 @@ import * as editorActions from 'store/modules/editor';
 class BeerEditorContainer extends Component {
 
     handleChangeInput = ({ beerId, beerName }) => {
-        console.log(beerId)
         const { EditorActions } = this.props;
         EditorActions.changeInput({beerId, beerName});
     }
