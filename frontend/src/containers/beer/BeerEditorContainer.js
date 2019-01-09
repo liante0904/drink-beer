@@ -25,8 +25,8 @@ class BeerEditorContainer extends Component {
 
 export default connect(
     (state) => ({
-        title: state.editor.get('beerId'),
-        markdown: state.editor.get('beerName'),
+        beerId: state.editor.get('beerId'),
+        beerName: state.editor.get('beerName'),
         tags: state.editor.get('tags')
       }),
       (dispatch) => ({
