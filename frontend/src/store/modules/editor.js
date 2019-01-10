@@ -6,13 +6,14 @@ import { Map } from 'immutable';
 // action types
 const INITIALIZE = 'editor/INITIALIZE';
 const CHANGE_INPUT = 'editor/CHANGE_INPUT';
+const ADD_BEER = 'editor/ADD_BEER';
 
 
 
 // action creators
 export const initialize = createAction(INITIALIZE);
 export const changeInput = createAction(CHANGE_INPUT);
-
+export const addBeer = createAction(ADD_BEER);
 
 // initial state
 const initialState = Map({
@@ -27,5 +28,9 @@ export default handleActions({
   [CHANGE_INPUT]: (state, action) => {
     const { name, value } = action.payload;
     return state.set(name, value);
+  },
+  [ADD_BEER]: (state, action) => {
+    const { data: beers } = action.payload;
+    console.log('store' +  beers);
   }
 }, initialState)

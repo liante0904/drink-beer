@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 
 import { Map, List, fromJS } from 'immutable';
-import { pender } from 'redux-pender';
+//import { pender } from 'redux-pender';
 
 import * as api from 'lib/api';
 
@@ -18,6 +18,14 @@ const initialState = Map({
 
 // reducer
 export default handleActions({
+  [GET_BEER_LIST]: (state, action) => {
+      const { data: beers } = action.payload;
+      return state.set('beers', fromJS(beers));
+    }
+}, initialState)
+
+/**
+export default handleActions({
   ...pender({
     type: GET_BEER_LIST,
     onSuccess: (state, action) => {
@@ -26,3 +34,4 @@ export default handleActions({
     }
   })
 }, initialState)
+ */

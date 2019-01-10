@@ -9,15 +9,26 @@ class BeerEditorContainer extends Component {
         const { EditorActions } = this.props;
         EditorActions.changeInput({name, value});
     }
+    handleSubmit = () => {
+        const { beerId, beerName, EditorActions } = this.props;
+        const beers = Map({
+          beerId:  beerId,
+          beerName: beerName,
+          tags: '',
+        });
+        EditorActions.ADD_BEER(beers);
+        console.log('handleSubmit');
+    }
 
     render() {
         const { beerId, beerName } = this.props;
-        const { handleChangeInput } = this;
+        const { handleChangeInput, handleSubmit } = this;
         return (
             <BeerEditor
               beerId={beerId}
               beerName={beerName}
               onChangeInput={handleChangeInput}
+              onSubmit={handleSubmit}
             />
         );
     }
