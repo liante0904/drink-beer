@@ -17,8 +17,10 @@
     "eject": "react-scripts eject",
     "client": "cd frontend && yarn client",
     "server": "cd backend && yarn start:dev",
+    "server-win": "cd backend && yarn start:dev-win",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "dev-install": "cd frontend && yarn && cd .. && cd backend && yarn"
+    "dev-win": "concurrently --kill-others-on-fail \"yarn server-win\" \"yarn client\"",
+    "dev-install": "cd frontend && yarn && yarn global add nodemon && cd .. && cd backend && yarn"
     
   },
   "proxy": "http://localhost:4000/"
