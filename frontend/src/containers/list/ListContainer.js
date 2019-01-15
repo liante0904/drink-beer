@@ -3,15 +3,10 @@ import BeerList from 'components/list/BeerList';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import * as listActions from 'store/modules/list';
-
+import * as api from 'lib/api';
 class ListContainer extends Component {
   getBeerList = () => {
-    // 페이지와 태그 값을 부모로부터 받아 옵니다.
-    const { tag, page, ListActions } = this.props;
-    ListActions.getBeerList({
-      page,
-      tag
-    });
+    const beers = api.getBeerList()
   }
 
   componentDidMount() {
