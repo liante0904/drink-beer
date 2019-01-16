@@ -6,7 +6,10 @@ import * as listActions from 'store/modules/list';
 import * as api from 'lib/api';
 class ListContainer extends Component {
   getBeerList = () => {
-    const beers = api.getBeerList()
+    const { dispatch } = this.props;
+    const beers = api.getBeerList();
+    beers.then( response => { console.log( response.data )})
+
   }
 
   componentDidMount() {
@@ -36,8 +39,7 @@ class ListContainer extends Component {
 export default connect(
   (state) => ({
     lastPage: state.list.get('lastPage'),
-    beers: state.list.get('beers'),
-    loading: state.pender.pending['list/GET_POST_LIST']
+    beers: state.list.get('beers')
   }),
   (dispatch) => ({
     ListActions: bindActionCreators(listActions, dispatch)
