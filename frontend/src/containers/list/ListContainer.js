@@ -5,17 +5,26 @@ import { bindActionCreators } from 'redux'
 import * as listActions from 'store/modules/list';
 import * as api from 'lib/api';
 class ListContainer extends Component {
-  getBeerList = () => {
-    const { dispatch } = this.props;
-    const beers = api.getBeerList();
-    beers.then( response => { console.log( response.data )})
-
+  constructor(){
+    super();
+    this.state = {
+      'beers':[]
+    }
   }
 
   componentDidMount() {
     this.getBeerList();
   }
 
+  getBeerList = () => {
+    const beers = api.getBeerList();
+    beers.then(response => response.data)
+         //.then(beers => console.log(beers))  
+         .then(beers => this.setState({ 'beers': beers }));
+  }
+
+
+  /*
   componentDidUpdate(prevProps, prevState) {
     // 페이지/태그가 바뀔 때 리스트를 다시 불러옵니다.
     if(prevProps.page !== this.props.page || prevProps.tag !== this.props.tag) {
@@ -24,13 +33,25 @@ class ListContainer extends Component {
       document.documentElement.scrollTop = 0; 
     }
   }
-  
+  */
   
   render() {
-    const { loading, beers } = this.props;
+    const { loading } = this.props;
     if(loading) return null; // 로딩 중에는 아무것도 보여주지 않습니다.
     return (
-        <BeerList beers={beers}/>
+      /*
+        <ul>
+          {this.state.beers.map( (item, index ) => {
+            return (
+              <div key={index}>
+                <h1>{item.title}</h1>
+                <p>{item.id}</p>
+              </div>
+            )
+          })}
+        </ul>
+      */  
+        <BeerList beers={this.state.beers}/>
           //Todo Pagination
     );
   }
@@ -38,8 +59,7 @@ class ListContainer extends Component {
 
 export default connect(
   (state) => ({
-    lastPage: state.list.get('lastPage'),
-    beers: state.list.get('beers')
+    beers: state.beers
   }),
   (dispatch) => ({
     ListActions: bindActionCreators(listActions, dispatch)
