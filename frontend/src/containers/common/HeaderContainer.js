@@ -28,11 +28,12 @@ class HeaderContainer extends Component {
   }
 }
 
+
 export default connect(
   (state) => ({
     logged: state.base.get('logged')
   }),
   (dispatch) => ({
-    BaseActions: bindActionCreators(baseActions, dispatch)
+//    BaseActions: bindActionCreators(baseActions, dispatch)
   })
 )(withRouter(HeaderContainer));

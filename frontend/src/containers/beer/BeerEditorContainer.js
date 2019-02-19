@@ -3,21 +3,22 @@ import BeerEditor from 'components/BeerEdit/BeerEditor'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as editorActions from 'store/modules/editor';
+import * as listActions from 'store/modules/list';
 
 class BeerEditorContainer extends Component {
     handleChangeInput = ({ name, value }) => {
         const { EditorActions } = this.props;
         EditorActions.changeInput({name, value});
     }
+
     handleSubmit = () => {
-        const { beerId, beerName, EditorActions } = this.props;
-        const beers = Map({
-          beerId:  beerId,
-          beerName: beerName,
-          tags: '',
-        });
-        EditorActions.ADD_BEER(beers);
-        console.log('handleSubmit');
+        const { name, value, EditorActions, ListActions, beer } = this.props;
+        const { beerId, beerName, tags } = beer.toJS();
+        //tags = '';
+        console.log(beerId, beerName, tags);
+        ListActions.insert(beer);
+        //EditorActions.addBeer( beerId, beerName, tags );
+        //EditorActions.changeInput('');
     }
 
     render() {
@@ -36,11 +37,11 @@ class BeerEditorContainer extends Component {
 
 export default connect(
     (state) => ({
-        beerId: state.editor.get('beerId'),
-        beerName: state.editor.get('beerName'),
-        tags: state.editor.get('tags')
+        beer: state.editor,
+        list: state.list
       }),
       (dispatch) => ({
-        EditorActions: bindActionCreators(editorActions, dispatch)
+        EditorActions: bindActionCreators(editorActions, dispatch),
+        ListActions: bindActionCreators(listActions, dispatch)
       })
   )(BeerEditorContainer);

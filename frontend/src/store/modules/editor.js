@@ -1,5 +1,6 @@
+import { Map, List } from 'immutable';
 import { createAction, handleActions } from 'redux-actions';
-import { Map } from 'immutable';
+
 //import { pender } from 'redux-pender';
 //import * as api from 'lib/api';
 
@@ -27,10 +28,11 @@ export default handleActions({
   [INITIALIZE]: (state, action) => initialState,
   [CHANGE_INPUT]: (state, action) => {
     const { name, value } = action.payload;
-    return state.set(name, value);
+    return state.set(name, value);    
   },
   [ADD_BEER]: (state, action) => {
-    const { data: beers } = action.payload;
-    console.log('store' +  beers);
+    const { name, value, tags } = action.payload;
+    //return state.push(Map('11','11','11'));
+                //.set('tags', tags);
   }
 }, initialState)

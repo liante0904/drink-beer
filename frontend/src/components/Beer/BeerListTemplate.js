@@ -1,6 +1,6 @@
 import React from 'react';
-import HeaderContainer from 'containers/common/HeaderContainer';
-import { Link } from 'react-router-dom';
+//import HeaderContainer from 'containers/common/HeaderContainer';
+//import { Link } from 'react-router-dom';
 
 const BeerListTemplate = ({form, children}) => {
     return (
