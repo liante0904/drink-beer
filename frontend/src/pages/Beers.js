@@ -4,7 +4,9 @@ import PageTemplate from 'components/common/PageTemplate';
 import ListWrapper from 'components/list/ListWrapper';
 import ListContainer from 'containers/list/ListContainer';
 
+
 class Beers extends Component {
+
 render(){
     return(
        <PageTemplate>

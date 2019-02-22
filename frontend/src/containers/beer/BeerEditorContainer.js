@@ -12,13 +12,11 @@ class BeerEditorContainer extends Component {
     }
 
     handleSubmit = () => {
-        const { name, value, EditorActions, ListActions, beer } = this.props;
+        const { ListActions, beer } = this.props;
         const { beerId, beerName, tags } = beer.toJS();
-        //tags = '';
+
         console.log(beerId, beerName, tags);
         ListActions.insert(beer);
-        //EditorActions.addBeer( beerId, beerName, tags );
-        //EditorActions.changeInput('');
     }
 
     render() {

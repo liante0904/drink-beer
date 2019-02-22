@@ -7,7 +7,8 @@
     "nodemon": "^1.18.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4",
+    "react-scripts": "^2.1.5",
+    "webpack-dev-server": "^3.1.14",
     "yarn-install": "^1.0.0"
   },
   "scripts": {
@@ -21,7 +22,6 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "dev-win": "concurrently --kill-others-on-fail \"yarn server-win\" \"yarn client\"",
     "dev-install": "cd frontend && yarn && yarn global add nodemon && cd .. && cd backend && yarn"
-    
   },
   "proxy": "http://localhost:4000/"
 }

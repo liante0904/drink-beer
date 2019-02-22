@@ -29,10 +29,12 @@ export default handleActions({
   [CHANGE_INPUT]: (state, action) => {
     const { name, value } = action.payload;
     return state.set(name, value);    
-  },
+  }
+  /*,
   [ADD_BEER]: (state, action) => {
-    const { name, value, tags } = action.payload;
+    //const { name, value, tags } = action.payload;
     //return state.push(Map('11','11','11'));
                 //.set('tags', tags);
   }
+  */
 }, initialState)

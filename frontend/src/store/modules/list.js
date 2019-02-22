@@ -38,10 +38,12 @@ export default handleActions({
       return state.set('beers', fromJS(beers));
   },
   [INSERT]: (state, action) => {
-    const { beerId, beerName, tags } = action.payload;
-    const { beer } = action.payload;
-    const beerJson = beer.toJS();
     return state.push(Map(action.payload));
+    
+    //const { beerId, beerName, tags } = action.payload;
+    
+    //const { beer } = action.payload;
+    //const beerJson = beer.toJS();
     // return state.push(Map({
     //   'beerId': beerId,
     //   'beerName': beerName,
