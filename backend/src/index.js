@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const Koa = require('koa');
+const cors = require('@koa/cors');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 const mongoose = require('mongoose');
@@ -24,6 +25,9 @@ mongoose.connect(mongoURI).then(() => {
 
 // 라우터 설정
 router.use('/api', api.routes()); // api 라우트 적용
+
+// Enable CORS 
+app.use(cors());
 
 // 라우터 적용 전에 bodyParser 적용
 app.use(bodyParser());

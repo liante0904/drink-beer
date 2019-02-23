@@ -18,17 +18,23 @@ class BeerEditorContainer extends Component {
         console.log(beerId, beerName, tags);
         ListActions.insert(beer);
     }
-
+    callApi = () => {
+        const { ListActions } = this.props;
+        ListActions.getBeerList();
+    }
     render() {
         const { beerId, beerName } = this.props;
-        const { handleChangeInput, handleSubmit } = this;
+        const { handleChangeInput, handleSubmit, callApi } = this;
         return (
-            <BeerEditor
-              beerId={beerId}
-              beerName={beerName}
-              onChangeInput={handleChangeInput}
-              onSubmit={handleSubmit}
-            />
+            <div>
+                <button onClick={callApi}>Call Api</button>
+                <BeerEditor
+                beerId={beerId}
+                beerName={beerName}
+                onChangeInput={handleChangeInput}
+                onSubmit={handleSubmit}
+                />
+            </div>
         );
     }
 }

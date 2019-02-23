@@ -5,10 +5,11 @@ import { createAction, handleActions } from 'redux-actions';
 import * as api from 'lib/api';
 
 // action types
-const GET_BEER_LIST = 'GET_BEER_LIST';
-const INSERT = 'INSERT';
+const GET_BEER_LIST = 'list/GET_BEER_LIST';
+const INSERT = 'list/INSERT';
+
 // action creators
-export const getBeerList = createAction(GET_BEER_LIST, api.getBeerList);
+export const getBeerList = createAction(GET_BEER_LIST);
 export const insert = createAction(INSERT);
 
 /**
@@ -16,6 +17,7 @@ export const insert = createAction(INSERT);
   body: String,
   tags: [String], // 문자열의 배열
  */
+
 // initial state
 const initialState = List([
   Map({
@@ -31,17 +33,18 @@ const initialState = List([
 ]);
   
 
-// reducer
+// reducer (action implement)
 export default handleActions({
   [GET_BEER_LIST]: (state, action) => {
-      const { data: beers } = action.payload;
-      return state.set('beers', fromJS(beers));
+      const beersApiReturn = api.getBeerList();
+      console.log(beersApiReturn);
+      //const { data: beers } = action.payload;
+      //return state.set('beers', fromJS(beers));
   },
   [INSERT]: (state, action) => {
     return state.push(Map(action.payload));
     
     //const { beerId, beerName, tags } = action.payload;
-    
     //const { beer } = action.payload;
     //const beerJson = beer.toJS();
     // return state.push(Map({
@@ -52,15 +55,3 @@ export default handleActions({
 
   }
 }, initialState)
-
-/**
-export default handleActions({
-  ...pender({
-    type: GET_BEER_LIST,
-    onSuccess: (state, action) => {
-      const { data: beers } = action.payload;
-      return state.set('beers', fromJS(beers));
-    }
-  })
-}, initialState)
- */

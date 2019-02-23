@@ -9,8 +9,6 @@ const INITIALIZE = 'editor/INITIALIZE';
 const CHANGE_INPUT = 'editor/CHANGE_INPUT';
 const ADD_BEER = 'editor/ADD_BEER';
 
-
-
 // action creators
 export const initialize = createAction(INITIALIZE);
 export const changeInput = createAction(CHANGE_INPUT);
