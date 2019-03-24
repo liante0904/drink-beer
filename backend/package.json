@@ -1,28 +1,31 @@
 {
-  "name": "blog-backend",
+  "name": "drink-beer-backend",
   "version": "1.0.0",
+  "description": "An app demonstrating simple Restful API implementation",
   "main": "index.js",
-  "license": "MIT",
+  "scripts": {
+    "test": "nodemon --exec \"mocha *.spec.js -w \"",
+    "start:dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "api",
+    "restful",
+    "json"
+  ],
+  "author": "Seunghoon Shin",
+  "license": "ISC",
   "dependencies": {
-    "@koa/cors": "^2.2.3",
-    "dotenv": "^5.0.1",
-    "joi": "^13.3.0",
-    "koa": "^2.7.0",
-    "koa-bodyparser": "^4.2.1",
-    "koa-router": "^7.4.0",
-    "mongoose": "^5.4.13"
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.7"
   },
   "devDependencies": {
-    "cross-env": "^5.2.0",
-    "eslint": "^5.14.0",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "nodemon": "^1.18.10"
-  },
-  "scripts": {
-    "start": "NODE_PATH=src node src",
-    "start:dev": "NODE_PATH=src nodemon --watch src/ src/index.js",
-    "start-win": "cross-env NODE_PATH=src node src",
-    "start:dev-win": "cross-env NODE_PATH=src nodemon --watch src/ src/index.js"
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
   }
 }
