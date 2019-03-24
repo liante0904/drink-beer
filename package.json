@@ -1,29 +1,18 @@
 {
-  "name": "example-create-react-app-express",
-  "version": "0.1.0",
-  "private": true,
+  "name": "new-drink-beer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
   "dependencies": {
-    "concurrently": "^3.6.1",
-    "merge": "^1.2.1",
-    "nodemon": "^1.18.3",
-    "react": "^16.4.1",
-    "react-dev-utils": "^7.0.3",
-    "react-dom": "^16.4.1",
-    "react-scripts": "^2.1.5",
-    "webpack-dev-server": "^3.1.14",
-    "yarn-install": "^1.0.0"
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.10"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "client": "cd frontend && yarn client",
-    "server": "cd backend && yarn start:dev",
-    "server-win": "cd backend && yarn start:dev-win",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "dev-win": "concurrently --kill-others-on-fail \"yarn server-win\" \"yarn client\"",
-    "dev-install": "cd frontend && yarn && yarn global add nodemon && cd .. && cd backend && yarn"
+    "server": "cd backend && yarn start",
+    "server:dev": "cd backend && yarn start:dev",
+    "client": "cd frontend && yarn start",
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev": "concurrently --kill-others-on-fail \"yarn server:dev\" \"yarn client\""
   },
   "proxy": "http://localhost:4000/"
 }

@@ -4,14 +4,14 @@
 
 ## Stack
 - Node.js
-  - [Koa](https://koajs.com/)
+  - [Express](http://expressjs.com)
 - React
 - MongoDB
 
 ## Package
-- corss-env
+- cross-env
+- dotenv
 - react-router-dom
-- query-string
 
 ## How to install
 `$ git clone https://github.com/liante0904/drink-beer.git`
