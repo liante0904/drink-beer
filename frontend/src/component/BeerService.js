@@ -22,8 +22,24 @@ export default class BeerService {
     get(){
         console.log('get')
     }
-    post(){
-        console.log('post')
+    post(data, callback){
+        console.log(data);
+        axios.post('http://localhost:4000/api/beers', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: {
+                data
+            }
+        })
+        .then( response => {
+            console.log(response.data);
+            //callback(response.data);
+        })
+        .catch( err => {
+            console.log(err);
+        })
     }
     put(){
         console.log('put')

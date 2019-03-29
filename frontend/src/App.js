@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import BeerService from './component/BeerService'
-import BeerItem from './component/BeerItem';
+import { BrowserRouter as Switch, Route } from 'react-router-dom';
+import BeerService from './component/BeerService';
+
+import AddBeer from './component/AddBeer';
+import BeerList from './component/BeerList';
 
 class App extends Component {
   constructor(props){
@@ -47,11 +50,11 @@ class App extends Component {
     = this;
     return (
       <div className="App">
-          {this.state.beers ? this.state.beers.map(
-            (beerItem, i) => {
-              return ( <BeerItem onDelete={handleDelete} beerItem={beerItem} key={i}/> )
-            }
-          ) : ""}
+        <Switch>
+          <Route path="/beer/add" component={AddBeer}/>
+          <Route exact path="/" component={BeerList}/>
+        </Switch>
+ 
       </div>
     );
   }
