@@ -21,9 +21,10 @@ exports.index = (req, res) => {
 
 // Handle create beer actions
 exports.insert = (req, res) => {
+    console.log("conn", req.body)
     let beer = new Beer();
-    beer.name = req.body.name ? req.body.name : beer.name;
-    beer.rating = req.body.rating;
+    beer.name = req.body.data.name ? req.body.data.name : beer.name;
+    beer.rating = req.body.data.rating;
 
     // save the beer and check for errors
     beer.save(function (err) {
@@ -32,7 +33,7 @@ exports.insert = (req, res) => {
 
         res.json({
             message: 'New beer created!',
-            data: beer
+            beer
         });
     });
 };
@@ -58,9 +59,9 @@ exports.update = (req, res) => {
         if (err)
             return res.send(err);
 
-        beer.name = req.body.name ? req.body.name : beer.name;
-        beer.rating = req.body.ratig;
-
+        beer.name = req.body.data.name ? req.body.data.name : beer.name;
+        beer.rating = req.body.data.rating;
+        console.log('nodejs update : ',beer.name, beer.rating)
         // save the beer and check for errors
         beer.save( (err) => {
             if (err)

@@ -5,21 +5,22 @@ class AddBeer extends Component {
     constructor(props){
         super(props);
         this.state = {
-            name: 'dddd',
-            rating: 12334
+            name: '',
+            rating: ''
         }
         this.beerService = new BeerService();
     }
     handleInsert = (e) => {
-        this.insertBeer(this.state);
+        console.log("handleInsert => ",this.state)
+        this.beerService.post(this.state, () => {
+            this.props.history.push('/');
+        });
     }
-    insertBeer = (data) => {
-        this.beerService.post(data);
-    }
+
     handleChange = (e) => {
-        //const { name, value } = e.target;
-        const { target: { name, value } } = e;
-        this.setState({ [name]: value });
+        this.setState({
+            [e.target.name]: e.target.value
+        });
         console.log(this.state)
     }
     render() {
@@ -36,7 +37,12 @@ class AddBeer extends Component {
                     <input type="text" name="rating" onChange={handleChange}/>
                 </div>
                 <button type="button" onClick={handleInsert}>Insert</button>
+                <div>
+                    <h1>this.state value check</h1>
+                    <div>{this.state.name} {this.state.rating}</div>
+                </div>
             </div>
+
         );
     }
 }

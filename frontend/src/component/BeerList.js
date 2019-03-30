@@ -20,22 +20,26 @@ class BeerList extends Component {
     }
     handleDelete = (event) => {
         const id = event.target.id;
+        console.log(id);
         this.beerService.delete(id, (response) => {
           console.log( response.status )
           if(response.status === 200) this.fetchBeerList();
-    
         });
-        console.log(id);
     }
     
+    handleUpdate = (event) => {
+        const id = event.target.id;
+        console.log(id);
+        this.props.history.push('/beer/update/'+ id);
+    }
     render() {
-        const { handleDelete }
+        const { handleUpdate, handleDelete }
         = this;
         return (
             <div>
                 {this.state.beers ? this.state.beers.map(
                         (beerItem, i) => {
-                            return ( <BeerItem onDelete={handleDelete} beerItem={beerItem} key={i}/> )
+                            return ( <BeerItem onDelete={handleDelete} onUpdate={handleUpdate} beerItem={beerItem} key={i}/> )
                         }
                     ) : ""} 
             </div>

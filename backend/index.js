@@ -1,6 +1,9 @@
 // Import dotenv
 require('dotenv').config();
 
+// Setup server port
+const port = process.env.PORT || PORT;
+
 // Import express
 const express = require('express');
 
@@ -37,19 +40,11 @@ mongoose.Promise = global.Promise;
 // Connect to Mongoose and set connection variable
 mongoose.connect(MONGO_URI, { useNewUrlParser: true });
 
-// Setup server port
-var port = process.env.PORT || PORT;
-
 // Send message for default URL
 app.get('/', (req, res) => res.send('Hello World with Express'));
 
 // Use Api routes in the App
 app.use('/api', apiRoutes);
-
-
-app.get('/user', function(req, res) {
-    res.status(200).json({ name: 'john' });
-  });
 
 // Launch app to listen to specified port
 app.listen(port, () => {

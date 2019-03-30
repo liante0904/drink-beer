@@ -6,7 +6,9 @@ const beerSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    rating: Number,
+    rating: {
+        type: Number
+    },
     create_date: {
         type: Date,
         default: Date.now

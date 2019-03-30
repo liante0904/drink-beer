@@ -1,5 +1,5 @@
 // Initialize express router
-let router = require('express').Router();
+const router = require('express').Router();
 
 // Set default API response
 router.get('/', (req, res) => {
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 
 // Import contact controller
-var beerController = require('./beerController');
+const beerController = require('./beerController');
 
 // beers routes
 router.route('/beers')
