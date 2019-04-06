@@ -4,6 +4,7 @@ import { BrowserRouter as Switch, Route, Link } from 'react-router-dom';
 import AddBeer from './component/AddBeer';
 import UpdateBeer from './component/UpdateBeer';
 import BeerList from './component/BeerList';
+import BeerDetail from './component/BeerDetail';
 
 class App extends Component {
   render() {
@@ -11,8 +12,9 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Link to="/beer/add">AddBeer</Link>
-          <Link exact="true" to="/">BeerList</Link>
+          <Link to="/">BeerList</Link>
           <Route exact path="/" component={BeerList}/>
+          <Route exact path="/beer/:id" component={BeerDetail}/>
           <Route path="/beer/add" component={AddBeer}/>
           <Route path="/beer/update/:id" component={UpdateBeer}/>
         </Switch>
