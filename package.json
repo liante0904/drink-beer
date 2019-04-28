@@ -5,7 +5,11 @@
   "license": "MIT",
   "dependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.18.10"
+    "immutable": "^4.0.0-rc.12",
+    "nodemon": "^1.18.10",
+    "react-redux": "^7.0.2",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.5"
   },
   "scripts": {
     "server": "cd backend && yarn start",

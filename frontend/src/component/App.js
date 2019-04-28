@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Switch, Route, Link } from 'react-router-dom';
 
-import AddBeer from './component/AddBeer';
-import UpdateBeer from './component/UpdateBeer';
-import BeerList from './component/BeerList';
-import BeerDetail from './component/BeerDetail';
+import AddBeer from '../component/AddBeer';
+import UpdateBeer from '../component/UpdateBeer';
+import BeerList from '../component/BeerList';
+import BeerDetail from '../component/BeerDetail';
 
 class App extends Component {
   render() {
